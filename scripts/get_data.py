@@ -43,9 +43,9 @@ if not os.path.exists(output_file):
     valid_df = pd.DataFrame(columns=['path', 'class'], data=valid_images)
     test_df = pd.DataFrame(columns=['path', 'class'], data=test_images)
 
-    train_df.to_csv(DATASET_PATH / 'train_paths.csv', index=False)
-    valid_df.to_csv(DATASET_PATH / 'valid_paths.csv', index=False)
-    test_df.to_csv(DATASET_PATH / 'test_paths.csv', index=False)
+    train_df.to_csv('..' / DATASET_PATH / 'train_paths.csv', index=False)
+    valid_df.to_csv('..' / DATASET_PATH / 'valid_paths.csv', index=False)
+    test_df.to_csv('..' / DATASET_PATH / 'test_paths.csv', index=False)
 
     print(f"Extraction complete. Dataset saved in '{output_dir}' directory.")
     os.remove(output_file)
