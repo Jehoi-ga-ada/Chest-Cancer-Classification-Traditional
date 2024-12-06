@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 from tqdm import tqdm
 
 # Step 1: Combine SIFT and kaze Features
-def extract_combined_features(image, upper_limit=None):
+def extract_matching_features(image, upper_limit=None):
     # SIFT Feature Extraction
     sift = cv2.SIFT_create(nfeatures=100)
     keypoints_sift, descriptors_sift = sift.detectAndCompute(image, None)
@@ -44,7 +44,7 @@ def extract_combined_features(image, upper_limit=None):
 def extract_features(images, upper_limit=10):
     features = []
     for image in images:
-        combined_features = extract_combined_features(image, upper_limit)
+        combined_features = extract_matching_features(image, upper_limit)
         features.append(combined_features)
     return np.array(features)
 
@@ -84,7 +84,7 @@ def classify_and_plot_matches(query_image, train_images, train_labels, upper_lim
     - best_label: The label of the best-matching training image.
     """
     # Extract combined features for the query image
-    query_kp, query_features = extract_combined_features(query_image, upper_limit)
+    query_kp, query_features = extract_matching_features(query_image, upper_limit)
 
     best_label = None
     best_index = -1
@@ -93,7 +93,7 @@ def classify_and_plot_matches(query_image, train_images, train_labels, upper_lim
 
     # Compare with each training image
     for i, train_image in tqdm(enumerate(train_images), desc="Matching Query with Train Images"):
-        _, train_features = extract_combined_features(train_image, upper_limit)
+        _, train_features = extract_matching_features(train_image, upper_limit)
         similarity = cosine_similarity(query_features, train_features)
 
         if similarity > best_similarity:
