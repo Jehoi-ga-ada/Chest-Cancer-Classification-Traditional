@@ -6,10 +6,9 @@ import numpy as np
 from tqdm import tqdm
 from skimage.feature import graycomatrix, graycoprops
 
-def preprocess_image(image):
-    blurred = cv2.GaussianBlur(image, (5, 5), 0)
-    edges = cv2.Canny(blurred, 100, 200)
-    return edges
+def preprocess_image(image): 
+    blurred = cv2.medianBlur(image, 3)
+    return blurred
 
 def load_images(annotation): 
     images = []
