@@ -158,18 +158,18 @@ def classify_and_plot_matches(query_image, train_images, train_labels, upper_lim
     )
 
     # Visualize the query image and best-matching training image along with matches
-    plt.figure(figsize=(15, 10))
-    plt.title(f"Query Image vs Best Match (Label: {best_label})")
-    plt.imshow(cv2.cvtColor(match_img, cv2.COLOR_BGR2RGB))
-    plt.axis(False)
+    # plt.figure(figsize=(15, 10))
+    # plt.title(f"Query Image vs Best Match (Label: {best_label})")
+    # plt.imshow(cv2.cvtColor(match_img, cv2.COLOR_BGR2RGB))
+    # plt.axis(False)
 
-    plt.figure(figsize=(15, 10))
-    plt.subplot(1, 2, 1)
-    plt.imshow(query_image)
-    plt.axis(False)
-    plt.subplot(1, 2, 2)
-    plt.imshow(best_train_image)
-    plt.axis(False)
-    plt.show()
+    # plt.figure(figsize=(15, 10))
+    # plt.subplot(1, 2, 1)
+    # plt.imshow(query_image)
+    # plt.axis(False)
+    # plt.subplot(1, 2, 2)
+    # plt.imshow(best_train_image)
+    # plt.axis(False)
+    # plt.show()
 
-    return best_label
+    return best_label, best_train_image, match_img
